@@ -1,9 +1,9 @@
 :root {
-    --bg: #e8ecec;
-    --text: #5735d4;
-    --accent: #6366f1; 
-    --gray: #eb581e;
-    --light-bg: #f0f4ad;
+    --bg: #ffffff;
+    --text: #4d267c;
+    --accent:#910ada; 
+    --gray: #e20606ec;
+    --light-bg: #ebfc9b;
 }
 
 body {
