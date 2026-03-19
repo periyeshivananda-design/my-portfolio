@@ -1,10 +1,16 @@
+const projectsDiv = document.getElementById('projects');
+
 fetch('http://localhost:5000/api/projects')
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
-        const container = document.getElementById('project-container');
         data.forEach(project => {
-            const projectDiv = document.createElement('div');
-            projectDiv.innerHTML = `<h3>${project.title}</h3><p>${project.description}</p>`;
-            container.appendChild(projectDiv);
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+            `;
+            projectsDiv.appendChild(card);
         });
-    });
+    })
+    .catch(err => console.log("Error loading projects:", err));
