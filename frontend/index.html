@@ -22,6 +22,26 @@
             <h2>Selected Projects</h2>
             <div id="projects" class="project-grid"></div>
         </section>
+        const projectsDiv = document.getElementById('projects');
+
+// Replace with your actual backend URL if you host the backend later
+fetch('http://localhost:5000/api/projects')
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+            `;
+            projectsDiv.appendChild(card);
+        });
+    })
+    .catch(err => {
+        console.log("Database not connected, showing placeholder...");
+        projectsDiv.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: gray;'>Connect your backend to see live projects!</p>";
+    });
 
         <section id="about" class="hidden">
             <h2>About Me</h2>
