@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivananda P | Portfolio</title>
+    <title>Sreenandha | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,49 +11,21 @@
         
         <header class="animate-in">
             <div class="hero">
-                <h1><span>Shivananda P</span></h1>
-                <p class="subtitle"></p>BSC Data Science-2nd SEM | Data Enthusiast</p>
+                <h1>Hi, I'm <span>Sreenandha</span></h1>
+                <p class="subtitle">Full Stack Developer | UI/UX Enthusiast</p>
                 <div class="divider"></div>
             </div>
         </header>
 
-        
-        <section id="work" class="hidden">
-            <h2>Selected Projects</h2>
-            <div id="projects" class="project-grid"></div>
-        </section>
-        const projectsDiv = document.getElementById('projects');
-
-// Replace with your actual backend URL if you host the backend later
-fetch('http://localhost:5000/api/projects')
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(project => {
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            card.innerHTML = `
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-            `;
-            projectsDiv.appendChild(card);
-        });
-    })
-    .catch(err => {
-        console.log("Database not connected, showing placeholder...");
-        projectsDiv.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: gray;'>Connect your backend to see live projects!</p>";
-    });
-
         <section id="about" class="hidden">
             <h2>About Me</h2>
             <p class="about-text">
-                HELLO,I am Shivananda <strong>pursuing BSC in Data Science at Kristu Jayanti University</strong> ,My academic background includes subjects 
-                such as RDBMS, Data Structures,Operating Systems, basic statistical analysis,..And I'm actively developing my skills in statistics and 
-                programming languages.
-                
+                I am a passionate <strong>Computer Science student</strong> and Full Stack Developer. 
+                I specialize in building clean, functional web applications using the MERN/PERN stack.
             </p>
             <div class="skills-tags">
                 <span>Node.js</span><span>PostgreSQL</span><span>JavaScript</span>
-                <span>HTML/CSS</span><span>Git & GitHub</span>
+                <span>C Programming</span><span>RDBMS</span><span>HTML/CSS</span>
             </div>
         </section>
 
@@ -62,41 +34,31 @@ fetch('http://localhost:5000/api/projects')
             <div class="cert-grid">
                 <div class="cert-card">
                     <div class="cert-icon">📜</div>
-                    <h3>Process Mining</h3>
-                    <p>Issued by Celonis</p>
+                    <h3>Full Stack Development</h3>
+                    <p>Google / Coursera</p>
                     <a href="#" class="btn-cert">View Certificate</a>
                 </div>
                 <div class="cert-card">
-                    <div class="cert-icon">📜</div>
-                    <h3>Digital Engineering</h3>
-                    <p>Issued by Nasscom</p>
-                    <a href="#" class="btn-cert">View Certificate</a>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">📜</div>
-                    <h3>Front End and Web Development Workflow</h3>
-                    <p>Issued by Infosys</p>
+                    <div class="cert-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Udemy Professional</p>
                     <a href="#" class="btn-cert">View Certificate</a>
                 </div>
             </div>
         </section>
 
-<section id="contact" class="hidden">
-    <div class="container">
-        <h2>Get In Touch</h2>
-        <p class="contact-text"> 
-            Whether you have a question or just want to say hi, my inbox is always open!
-        </p>
-        <div class="contact-links">
-            <a href="mailto:periyeshivananda@gmail.com" class="btn-primary">Gmail Me</a>
-            
-        </div>
-    </div>
-</section>
-    </div>
-</section>
+        <section id="contact" class="hidden">
+            <h2>Get In Touch</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </section>
+
         <footer>
-            <p>© 2026 </p>
+            <p>© 2026 Sreenandha. Built with ❤️</p>
         </footer>
     </div>
 
