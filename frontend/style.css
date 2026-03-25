@@ -86,7 +86,7 @@ footer { text-align: center; padding-top: 30px; color: var(--gray); font-size: 0
     background: #f8fafc;
     padding: 30px;
     border-radius: 20px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f3c5eb;
     transition: all 0.3s ease;
     text-align: left;
 }
