@@ -1,42 +1,35 @@
 const express = require('express');
-const { Pool } = require('pg');
+const mysql = require('mysql2'); // Changed from 'pg'
 const cors = require('cors');
-const app = express();
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 1. Create the Connection to PostgreSQL
-// When you host on Render, you will replace these with a "Connection String"
-const pool = new Pool({
-    user: 'postgres',       // Your default Postgres username
+// 1. MySQL Connection Configuration
+const db = mysql.createConnection({
     host: 'localhost',
-    database: 'portfolio_db',
-    password: 'your_password_here', // Change this to your Postgres password
-    port: 5432,
+    user: 'root',           // Default MySQL user
+    password: 'tiger', 
+    database: 'portfolio'   // The name of your database in MySQL Workbench
 });
 
-// 2. Test the connection
-pool.connect((err) => {
+// 2. Connect to MySQL
+db.connect(err => {
     if (err) {
-        console.error('PostgreSQL Connection Error: ' + err.message);
-    } else {
-        console.log('Connected to PostgreSQL Database! 🐘');
+        console.error('Error connecting to MySQL:', err);
+        return;
     }
+    console.log('Connected to MySQL Database!');
 });
 
-// 3. The Route to receive data from Frontend
-app.post('/contact', async (req, res) => {
-    const { name, email, message } = req.body;
-    const queryText = 'INSERT INTO messages(name, email, message) VALUES($1, $2, $3)';
-    
-    try {
-        await pool.query(queryText, [name, email, message]);
-        res.status(200).json({ message: 'Data saved to PostgreSQL!' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Database error' });
-    }
+// 3. Updated Route for MySQL
+app.get('/api/projects', (req, res) => {
+    const sql = "SELECT * FROM projects";
+    db.query(sql, (err, results) => {
+        if (err) return res.status(500).json(err);
+        res.json(results); // Sends your MySQL table data to the site
+    });
 });
 
-app.listen(5000, () => console.log('Server running on http://localhost:5000'));
+app.listen(5000, () => console.log("Server running on port 5000"));
